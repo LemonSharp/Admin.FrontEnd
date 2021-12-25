@@ -1,0 +1,20 @@
+﻿@page "/VaccinationPlace"
+
+@code {
+    private Task<bool> OnSaveAsync(ItemModel arg1, ItemChangedType arg2)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+
+<Table TItem="ItemModel" Items="@Items.Take(3)" IsBordered="true" IsStriped="true"  ShowToolbar="true"
+       ClickToSelect="true" OnSaveAsync="OnSaveAsync">
+    <TableColumns>
+        <TableColumn Text="ID" @bind-Field="@context.Name" Width="180" />
+        <TableColumn Text="名称" @bind-Field="@context.Name" />
+        <TableColumn Text="地址" @bind-Field="@context.Address" />
+        <TableColumn Text="联系电话" @bind-Field="@context.Address" />
+        <TableColumn Text="操作" @bind-Field="@context.Address" />
+    </TableColumns>
+</Table>
