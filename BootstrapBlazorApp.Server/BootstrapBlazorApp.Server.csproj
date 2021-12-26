@@ -11,7 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BootstrapBlazorApp.POCO\BootstrapBlazorApp.POCO.csproj" />
+    <ProjectReference Include="..\BootstrapBlazorApp.Proxy\BootstrapBlazorApp.Proxy.csproj" />
     <ProjectReference Include="..\BootstrapBlazorApp.Shared\BootstrapBlazorApp.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Refit" Version="6.1.15" />
+    <PackageReference Include="RestSharp" Version="106.15.0" />
   </ItemGroup>
 
 </Project>

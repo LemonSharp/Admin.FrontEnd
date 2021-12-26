@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazorApp.WebAssem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazorApp.Shared", "BootstrapBlazorApp.Shared\BootstrapBlazorApp.Shared.csproj", "{AB04595F-4692-4CA9-9D18-3F4C640AC028}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapBlazorApp.Proxy", "BootstrapBlazorApp.Proxy\BootstrapBlazorApp.Proxy.csproj", "{59CEA681-867A-4DF1-B791-ECECFA73C368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapBlazorApp.POCO", "BootstrapBlazorApp.POCO\BootstrapBlazorApp.POCO.csproj", "{21962C03-0B72-45BE-B04F-316A55A65617}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AB04595F-4692-4CA9-9D18-3F4C640AC028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB04595F-4692-4CA9-9D18-3F4C640AC028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB04595F-4692-4CA9-9D18-3F4C640AC028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59CEA681-867A-4DF1-B791-ECECFA73C368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CEA681-867A-4DF1-B791-ECECFA73C368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CEA681-867A-4DF1-B791-ECECFA73C368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CEA681-867A-4DF1-B791-ECECFA73C368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21962C03-0B72-45BE-B04F-316A55A65617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21962C03-0B72-45BE-B04F-316A55A65617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21962C03-0B72-45BE-B04F-316A55A65617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21962C03-0B72-45BE-B04F-316A55A65617}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

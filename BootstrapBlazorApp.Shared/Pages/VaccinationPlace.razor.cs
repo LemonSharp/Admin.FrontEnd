@@ -1,44 +1,36 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using BootstrapBlazorApp.POCO.VaccinationLocation;
+using BootstrapBlazorApp.Proxy;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BootstrapBlazorApp.Shared.Pages;
 
-public class ItemModel
-{
-    [NotNull]
-    public string Name { get; set; }
-
-    [NotNull]
-    public string Address { get; set; }
-
-    [NotNull]
-    public DateTime? DateTime { get; set; }
-}
-
 public partial class VaccinationPlace
 {
+    private readonly IVaccinationLocationProxy _vacc;
+
+    public VaccinationPlace()
+    {
+        _vacc = new VaccinationLocationProxy();
+    }
+
     [NotNull]
-    private List<ItemModel>? Items { get; set; }
+    private List<VaccinationLocationResponse>? Items { get; set; }
 
     /// <summary>
     /// OnInitialized 方法
     /// </summary>
-    protected override void OnInitialized()
+    protected async override void OnInitialized()
     {
         base.OnInitialized();
 
-        Items = FillItems();
+        Items = await FillItems();
     }
 
-    private List<ItemModel> FillItems()
+    private async Task<List<VaccinationLocationResponse>> FillItems()
     {
-        var items = new List<ItemModel>();
-        items.Add(new ItemModel()
-        {
-            DateTime = DateTime.Now,
-            Name = "1",
-            Address = "2"
-        });
+        var items = new List<AddSiteRequestDTO>();
+        var request = new VaccinationLocationRequest();
 
-        return items;
+        return await _vacc.GetList(request);
     }
 }
