@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using System.Net.Http.Json;
+using Dapr.Client;
 
 namespace BootstrapBlazorApp.Proxy;
 
@@ -15,22 +16,24 @@ public interface IVaccinationLocationProxy
 
 public class VaccinationLocationProxy : IVaccinationLocationProxy
 {
+    private readonly DaprClient _daprClient;
+
+    public VaccinationLocationProxy(DaprClient daprClient)
+    {
+        _daprClient = daprClient;
+    }
+
     public async Task<List<VaccinationLocationResponse>> GetList(VaccinationLocationRequest request)
     {
-        var client = new RestClient(Constants.SiteRootUrl);
-        var requestPrepare = new RestRequest("/api/Site/List", Method.GET);
-        requestPrepare.AddParameter("content-type", "application/json");
-        var result = client.Execute<List<VaccinationLocationResponse>>(requestPrepare).Data;
-
+        var result = await _daprClient.InvokeMethodAsync<List<VaccinationLocationResponse>>
+            ("vaccination-site", "/api/Site/List");
         return result;
     }
 
     public async Task<BusinessResult> AddNewSite(AddSiteRequestDTO request)
     {
-        var client = new RestClient(Constants.SiteRootUrl);
-        var requestPrepare = new RestRequest("api/Site/AddNewSite", Method.POST);
-        requestPrepare.RequestFormat = DataFormat.Json;
-        requestPrepare.AddJsonBody(request);
-        return await client.PostAsync<BusinessResult>(requestPrepare);
+        var result = await _daprClient.InvokeMethodAsync<AddSiteRequestDTO, BusinessResult>
+            ("vaccination-site", "api/Site/AddNewSite", request);
+        return result;
     }
 }
