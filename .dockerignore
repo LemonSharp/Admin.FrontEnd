@@ -1,0 +1,18 @@
+# directories
+**/bin/
+**/obj/
+**/out/
+.vs
+.vscode
+.git
+.github
+.idea
+BootstrapBlazorApp.WebAssembly
+
+# files
+**/*.trx
+**/*.md
+docker-compose.yml
+docker-compose.*.yml
+.gitignore
+.gitattributes
