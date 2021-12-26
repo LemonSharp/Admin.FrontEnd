@@ -17,6 +17,12 @@
 
   <ItemGroup>
     <PackageReference Include="BootstrapBlazor" Version="6.*" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BootstrapBlazorApp.POCO\BootstrapBlazorApp.POCO.csproj" />
+    <ProjectReference Include="..\BootstrapBlazorApp.Proxy\BootstrapBlazorApp.Proxy.csproj" />
   </ItemGroup>
 
 </Project>

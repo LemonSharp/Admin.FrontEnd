@@ -1,20 +1,37 @@
 ﻿@page "/VaccinationPlace"
+@using BootstrapBlazorApp.POCO.VaccinationLocation
+@using Microsoft.AspNetCore.Components
+@using BootstrapBlazorApp.POCO
 
 @code {
-    private Task<bool> OnSaveAsync(ItemModel arg1, ItemChangedType arg2)
+    private async Task<bool> OnSaveAsync(VaccinationLocationResponse arg1, ItemChangedType arg2)
     {
-        throw new NotImplementedException();
+        var result = await _vacc.AddNewSite(new AddSiteRequestDTO()
+        {
+            SiteName = arg1.SiteName,
+            AddressName = arg1.AddressName,
+            AddressLongitude = arg1.AddressLongitude,
+            AddressLatitude = arg1.AddressLatitude,
+            Capacity = arg1.Capacity
+        });
+
+        if (result.Code == BusinessCode.Success)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
 
-
-<Table TItem="ItemModel" Items="@Items.Take(3)" IsBordered="true" IsStriped="true"  ShowToolbar="true"
-       ClickToSelect="true" OnSaveAsync="OnSaveAsync">
+<Table TItem="VaccinationLocationResponse" Items="@Items" IsBordered="true" IsStriped="true"  ShowToolbar="true"
+       ClickToSelect="true" OnSaveAsync="OnSaveAsync" ShowEditButton="false" ShowDeleteButton="false">
     <TableColumns>
-        <TableColumn Text="ID" @bind-Field="@context.Name" Width="180" />
-        <TableColumn Text="名称" @bind-Field="@context.Name" />
-        <TableColumn Text="地址" @bind-Field="@context.Address" />
-        <TableColumn Text="联系电话" @bind-Field="@context.Address" />
-        <TableColumn Text="操作" @bind-Field="@context.Address" />
+        <TableColumn Text="ID" @bind-Field="@context.SiteId" Width="180" Editable="false" Visible="false" />
+        <TableColumn Text="名称" @bind-Field="@context.SiteName" />
+        <TableColumn Text="地址" @bind-Field="@context.AddressName" />
+        <TableColumn Text="经度" @bind-Field="@context.AddressLongitude" />
+        <TableColumn Text="纬度" @bind-Field="@context.AddressLatitude" />
+        <TableColumn Text="接种容量" @bind-Field="@context.Capacity" />
     </TableColumns>
 </Table>
